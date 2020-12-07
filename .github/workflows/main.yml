@@ -16,6 +16,7 @@ jobs:
         working-directory: infra
     steps:
       - uses: actions/checkout@v2
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
@@ -73,4 +74,4 @@ jobs:
         run: yarn validateOpenApi
 
       - name: upload api docs to s3
-        run: aws s3 cp ./api.yml s3://docs.ochamo.space/docs/api.yml
+        run: aws s3 cp ./api.yml s3://docs.ochamo.space/api.yml
