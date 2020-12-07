@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "noImplicitAny": true,
+    "noImplicitThis": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "strictNullChecks": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "target": "ES2019",
+    "outDir": "build",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "rootDir": "./"
+  },
+  "include": ["src/"],
+  "exclude": ["node_modules/"]
+}

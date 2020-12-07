@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://docs.ochamo.space/schemas/orders/Order.json",
+  "title": "order",
+  "description": "order item",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "title": "id",
+      "description": "unique order id",
+      "examples": ["ux0YQPuS3"]
+    },
+    "userId": {
+      "type": "string",
+      "title": "userId",
+      "description": "unique user id",
+      "examples": ["6t2EClcRm"]
+    },
+    "price": {
+      "type": "number",
+      "exclusiveMinimum": 0,
+      "title": "total price",
+      "description": "total price of this order",
+      "examples": [12.5, 999]
+    },
+    "status": {
+      "description": "order status. default is pending",
+      "$ref": "./OrderStatus.json"
+    },
+    "expiredAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "address": {
+      "$ref": "../common/Address.json"
+    }
+  },
+  "required": ["id", "userId", "price", "status", "address", "expiredAt"],
+  "additionalProperties": false
+}

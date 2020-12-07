@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://docs.ochamo.space/schemas/common/Address.json",
+  "title": "address",
+  "description": "address item",
+  "type": "object",
+  "properties": {
+    "country": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "postalCode": {
+      "type": "string",
+      "examples": ["1181RC"]
+    }
+  },
+  "required": ["country", "address", "postalCode"],
+  "additionalProperties": false
+}

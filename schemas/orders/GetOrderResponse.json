@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://docs.ochamo.space/schemas/orders/GetOrderResponse.json",
+  "title": "GetOrderResponse",
+  "description": "get order response",
+  "type": "object",
+  "properties": {
+    "order": { "$ref": "./Order.json" }
+  },
+  "required": ["order"],
+  "additionalProperties": false
+}

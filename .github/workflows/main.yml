@@ -1,0 +1,76 @@
+name: Schemas
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - schemas/**
+      - .github/workflows/main.yml
+
+jobs:
+  update-infra:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra
+    steps:
+      - uses: actions/checkout@v2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+
+      - name: Terraform init
+        run: terraform init
+
+      - name: Terraform Plan
+        run: terraform plan -no-color -var "REGION=eu-central-1" -var "DOMAIN=docs.ochamo.space" -var "ZONE_ID=${{ secrets.ZONE_ID }}"
+
+      - name: Terraform apply
+        run: terraform apply -no-color -auto-approve -var "REGION=eu-central-1" -var "DOMAIN=docs.ochamo.space" -var "ZONE_ID=${{ secrets.ZONE_ID }}"
+
+  update-schema:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: eu-central-1
+
+      - uses: actions/setup-node@v2-beta
+        with:
+          node-version: '12'
+
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - uses: actions/cache@v1
+        id: yarn-cache
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: install dependencies
+        run: yarn
+
+      - name: upload schemas to s3
+        run: aws s3 cp ./schemas/orders s3://docs.ochamo.space/schemas/orders --recursive
+
+      - name: generate files from json schema
+        run: yarn generate
+
+      - name: validate open api schema
+        run: yarn validateOpenApi
+
+      - name: upload api docs to s3
+        run: aws s3 cp ./api.yml s3://docs.ochamo.space/docs/api.yml

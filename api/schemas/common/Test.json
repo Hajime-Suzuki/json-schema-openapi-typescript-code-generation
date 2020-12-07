@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "$id": "http://docs.ochamo.space/schemas/common/Test.json",
+  "title": "Test",
+  "description": "Test item",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$id": "#/properties/id",
+      "type": "integer",
+      "title": "id",
+      "description": "some id",
+      "examples": [1]
+    },
+    "name": {
+      "$id": "#/properties/name",
+      "type": "string",
+      "title": "name",
+      "minLength": 1,
+      "description": "min length is 1",
+      "examples": ["A green door"]
+    },
+    "address": {
+      "$ref": "./Address.json"
+    }
+  },
+  "required": ["id", "name", "price"],
+  "additionalProperties": false
+}
