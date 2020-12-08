@@ -3,7 +3,7 @@ const fs = require('fs-extra')
 const path = require('path')
 
 const SCHEMA_FOLDER = './schemas'
-const API_FOLDER = './api'
+const API_FOLDER = './api-docs'
 
 const getAllSchemas = folder => {
   const dirs = fs.readdirSync(folder)

@@ -13,9 +13,15 @@
     },
     "postalCode": {
       "type": "string",
-      "examples": ["1181RC"]
+      "examples": [
+        "1181RC"
+      ]
     }
   },
-  "required": ["country", "address", "postalCode"],
+  "required": [
+    "country",
+    "address",
+    "postalCode"
+  ],
   "additionalProperties": false
 }

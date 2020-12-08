@@ -9,20 +9,27 @@
       "type": "string",
       "title": "id",
       "description": "unique order id",
-      "examples": ["ux0YQPuS3"]
+      "examples": [
+        "ux0YQPuS3"
+      ]
     },
     "userId": {
       "type": "string",
       "title": "userId",
       "description": "unique user id",
-      "examples": ["6t2EClcRm"]
+      "examples": [
+        "6t2EClcRm"
+      ]
     },
     "price": {
       "type": "number",
       "exclusiveMinimum": 0,
       "title": "total price",
       "description": "total price of this order",
-      "examples": [12.5, 999]
+      "examples": [
+        12.5,
+        999
+      ]
     },
     "status": {
       "description": "order status. default is pending",
@@ -36,6 +43,13 @@
       "$ref": "../common/Address.json"
     }
   },
-  "required": ["id", "userId", "price", "status", "address", "expiredAt"],
+  "required": [
+    "id",
+    "userId",
+    "price",
+    "status",
+    "address",
+    "expiredAt"
+  ],
   "additionalProperties": false
 }

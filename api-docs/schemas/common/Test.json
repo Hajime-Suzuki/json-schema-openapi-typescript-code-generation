@@ -10,7 +10,9 @@
       "type": "integer",
       "title": "id",
       "description": "some id",
-      "examples": [1]
+      "examples": [
+        1
+      ]
     },
     "name": {
       "$id": "#/properties/name",
@@ -18,12 +20,18 @@
       "title": "name",
       "minLength": 1,
       "description": "min length is 1",
-      "examples": ["A green door"]
+      "examples": [
+        "A green door"
+      ]
     },
     "address": {
       "$ref": "./Address.json"
     }
   },
-  "required": ["id", "name", "price"],
+  "required": [
+    "id",
+    "name",
+    "price"
+  ],
   "additionalProperties": false
 }

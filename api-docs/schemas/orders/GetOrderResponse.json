@@ -9,6 +9,8 @@
       "$ref": "./Order.json"
     }
   },
-  "required": ["order"],
+  "required": [
+    "order"
+  ],
   "additionalProperties": false
 }

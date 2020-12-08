@@ -9,7 +9,7 @@
     "check-updates": "ncu",
     "ts": "yarn json2ts -i 'schemas/orders/*.json' --cwd ./schemas/orders -o src/schemas/",
     "openApi": "node json-schema-to-openapi.js",
-    "generate": "yarn openApi && yarn ts && yarn swagger-cli bundle -t yaml -o api.yml ./api/api.yml",
+    "generate": "yarn openApi && yarn ts && yarn swagger-cli bundle -t yaml -o api.yml ./api-docs/api.yml",
     "downloadCommon": "aws s3 cp s3://docs.ochamo.space/schemas/common ./schemas/common --recursive",
     "validateOpenApi": "yarn swagger-cli validate --no-schema ./api.yml",
     "publish-please": "publish-please",

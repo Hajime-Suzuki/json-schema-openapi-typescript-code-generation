@@ -7,7 +7,6 @@ info:
 servers:
   - url: http://localhost:4000
 
-#https://swagger.io/docs/specification/authentication/bearer-authentication/
 components:
   securitySchemes:
     jwtAuth:
@@ -19,7 +18,7 @@ paths:
   /orders:
     post:
       security:
-        - jwtAuth: [admin]
+        - jwtAuth: []
       description: create order
       summary: /orders
       requestBody:

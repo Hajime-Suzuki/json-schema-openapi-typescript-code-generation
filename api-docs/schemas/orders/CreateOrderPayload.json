@@ -12,6 +12,9 @@
       "$ref": "./Order.json#/properties/price"
     }
   },
-  "required": ["userId", "price"],
+  "required": [
+    "userId",
+    "price"
+  ],
   "additionalProperties": false
 }

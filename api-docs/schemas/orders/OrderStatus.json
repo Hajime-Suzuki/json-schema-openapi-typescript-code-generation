@@ -3,6 +3,11 @@
   "$id": "http://docs.ochamo.space/schemas/orders/OrderStatus.json",
   "title": "OrderStatus",
   "description": "order status.",
-  "enum": ["PENDING", "PAID", "COMPLETED", "CANCELLED"],
+  "enum": [
+    "PENDING",
+    "PAID",
+    "COMPLETED",
+    "CANCELLED"
+  ],
   "default": "PENDING"
 }
